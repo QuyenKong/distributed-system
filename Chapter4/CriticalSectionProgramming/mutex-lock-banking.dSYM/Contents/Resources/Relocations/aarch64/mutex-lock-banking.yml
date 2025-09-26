@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/drakon/hust-master/distributed-system/Chapter4/CriticalSectionProgramming/mutex-lock-banking'
+relocations:     []
+...
