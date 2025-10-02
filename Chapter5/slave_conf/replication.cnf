@@ -1,0 +1,5 @@
+[mysqld]
+server-id=2
+relay-log=relay-bin
+log-bin=mysql-bin
+binlog-do-db=testdb

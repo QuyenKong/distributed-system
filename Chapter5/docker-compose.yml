@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  master:
+    image: mysql:5.7
+    platform: linux/amd64   # ép chạy bản x86_64
+    container_name: mysql_master
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: testdb
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./master_data:/var/lib/mysql
+      - ./master_conf:/etc/mysql/conf.d
+
+  slave:
+    image: mysql:5.7
+    platform: linux/amd64   # ép chạy bản x86_64
+    container_name: mysql_slave
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: testdb
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./slave_data:/var/lib/mysql
+      - ./slave_conf:/etc/mysql/conf.d
+    depends_on:
+      - master
